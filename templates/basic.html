@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="ua-mac ua-webkit">
+    <head>
+    </head>
+    <body>
+        {% for message in get_flashed_messages() %}
+        <div>{{ message }}</div>
+        {% endfor %}
+
+        {% for item in items %}
+        <div><a target="_blank" href="{{ item[1] }}">{{ item[0] }}</a></div>
+        <div>{{ item[2] }}</div>
+        {% endfor %}
+    </body>
+</html>
