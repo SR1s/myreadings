@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="ua-mac ua-webkit">
     <head>
+        <title>无读有偶？</title>
+        <link rel="stylesheet" type="text/css" href='{{ url_for("static",filename="bootstrap/css/bootstrap.min.css") }}'>
+        <link rel="stylesheet" type="text/css" href='{{ url_for("static",filename="css/myreadings.css") }}'>
     </head>
     <body>
-        {% for message in get_flashed_messages() %}
-        <div>{{ message }}</div>
-        {% endfor %}
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navigator">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">无读有偶？</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a>发现</a></li>
+                        <li><a>我的记录</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="">添加记录</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">SR1<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">退出登录</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main span12">
+            {% for message in get_flashed_messages() %}
+            <div>{{ message }}</div>
+            {% endfor %}
 
-        {% for item in items %}
-        <div><a target="_blank" href="{{ item[1] }}">{{ item[0] }}</a></div>
-        <div>{{ item[2] }}</div>
-        {% endfor %}
+            {% for item in items %}
+            <div><a target="_blank" href="{{ item[1] }}">{{ item[0] }}</a></div>
+            <div>{{ item[2] }}</div>
+            {% endfor %}
+        </div>
+        <script type="text/javascript" src='{{ url_for("static",filename="bootstrap/js/bootstrap.min.js") }}'></script>
     </body>
 </html>
