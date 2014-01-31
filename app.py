@@ -41,7 +41,7 @@ def hello():
     items = list(c.fetchall())
     #js = json.loads(items)
     #return json.dumps(items,ensure_ascii=False)
-    return render_template("basic.html", items=items)
+    return render_template("index.html", items=items)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
