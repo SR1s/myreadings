@@ -38,7 +38,8 @@ def hello():
     sql = """SELECT `title`, `link`, `description` FROM `items` ORDER BY `id` desc; """
     c = g.db.cursor()
     c.execute(sql)
-    items = list(c.fetchall())
+    items = [dict(title=item[0], link=item[1], description=item[2])
+             for item in c.fetchall() ]
     #js = json.loads(items)
     #return json.dumps(items,ensure_ascii=False)
     return render_template("index.html", items=items)
