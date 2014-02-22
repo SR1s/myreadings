@@ -10,3 +10,30 @@
 	margin-right: auto;
 	margin-left: auto;	
 }
+
+.index-item {
+	margin: 10px 10px 0 10px;
+	padding: 10px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #428bca;
+}
+
+.index-item h1 {
+	margin: 0 0 6px 0;
+	padding: 0 0 6px 0;
+	font-size: 1.3em;
+	border-color: #428bca;
+	border-width: 0 0 1px 0;
+	border-style: dashed;
+}
+
+.index-item p {
+	margin: 0;
+}
+
+.index-item .author {
+	text-align: right;
+	color: #999;
+}
