@@ -57,5 +57,13 @@ def add():
         return redirect(url_for("hello"))
     return render_template("add.html")
 
+@app.route('/u/<int:user_id>')
+def user(user_id):
+    return str(user_id)
+
+@app.route('/view')
+def user():
+    return render_template("view.html")
+
 if "__main__" == __name__ :
     app.run()
