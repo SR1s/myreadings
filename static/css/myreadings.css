@@ -34,6 +34,7 @@
 }
 
 .index-item .author {
+	margin-top: 6px;
 	text-align: right;
 	color: #999;
 }
