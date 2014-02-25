@@ -62,7 +62,7 @@ def user(user_id):
     return str(user_id)
 
 @app.route('/view')
-def user():
+def view():
     return render_template("view.html")
 
 if "__main__" == __name__ :
