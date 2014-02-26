@@ -1,15 +1,15 @@
-class Item :
-    def __init__(self):
-        self.title = ""
-        self.link = ""
-        self.description = ""
-        self.owner = None
-    def set_title(title):
-        self.title = title
-    def set_link(link):
+from flask.ext.sqlalchemy import SQLAlchemy
+from app import db
+
+class Item(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    link = db.Column(db.String(255), unique=True)
+    title = db.Column(db.String(255))
+
+    def __init__(self, link, title):
         self.link = link
-    def set_description(description):
-        self.description = description
-    def set_description(owner):
-        if isinstance(owner, User):
-            self.owner = owner
+        self.title = title
+
+    def __repr__(self):
+        return '<Item: %s : %s>' % \
+                (self.title, self.link)

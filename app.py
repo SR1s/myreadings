@@ -5,7 +5,7 @@ import MySQLdb
 
 import sys  
 reload(sys)  
-sys.setdefaultencoding('utf8')   
+sys.setdefaultencoding('utf8')
 
 import imp
 try:
@@ -16,9 +16,15 @@ except ImportError:
     from config.local_config import (MYSQL_HOST, MYSQL_HOST_S, MYSQL_PORT, 
                                      MYSQL_USER, MYSQL_PASS, MYSQL_DB)
 
+from flask.ext.sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] =  \
+        'mysql://%s:%s@%s:%s/%s' % \
+        (MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_PORT, MYSQL_DB)
 app.debug = True
 app.secret_key = 'guesswhatkeyitis'
+db = SQLAlchemy(app)
 
 
 @app.before_request
