@@ -1,3 +1,7 @@
-next focus:
-    * build reader page
-        - enable write web page while reading
+# About
+This project aim to build a service for users to make they notes while they viewing webpage which have something needed to record.
+
+# Dependency
+Flask
+Flask-SQLAlchemy
+MySQL
