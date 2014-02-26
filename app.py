@@ -65,5 +65,9 @@ def user(user_id):
 def view():
     return render_template("view.html")
 
+@app.route("/note/add", methods=['POST',])
+def add_note():
+    pass
+
 if "__main__" == __name__ :
     app.run()

@@ -57,3 +57,19 @@
 #toolbar .content span {
 	line-height: 50px;
 }
+
+#toolbar .editblock {
+	margin-right: 2px;
+	background-color: #EEE;
+	padding: 10px;
+	float: right;
+	border-radius: 5px;
+	border-color: #ddd;
+	border-width: 1px;
+	border-style: solid;
+	width: 340px;
+}
+
+#toolbar .editblock * {
+	float: right;
+}
