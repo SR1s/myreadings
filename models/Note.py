@@ -1,4 +1,4 @@
-from app import db
+from myreadings.models import db
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)

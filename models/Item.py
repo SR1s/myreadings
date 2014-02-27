@@ -1,5 +1,4 @@
-from flask.ext.sqlalchemy import SQLAlchemy
-from app import db
+from myreadings.models import db
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
