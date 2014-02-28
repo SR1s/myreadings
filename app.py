@@ -31,8 +31,14 @@ def add():
     if request.method == 'POST':
         link = request.form['link']
         title = request.form['title']
+        description = request.form['description']
+
         item = Item(link, title)
         db.session.add(item)
+        db.session.commit()
+
+        note = Note(description, 1, item.id)
+        db.session.add(note)
         db.session.commit()
         return redirect(url_for("hello"))
     return render_template("add.html")
