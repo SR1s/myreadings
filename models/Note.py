@@ -14,6 +14,10 @@ class Note(db.Model):
         self.user_id = user_id
         self.item_id = item_id
 
-    def __repr__(Note):
+    def __repr__(self):
         return '<Item: %s By %s - %s>' % \
                 (self.content, self.item_id, self.add_date)
+
+    def mixinItem(self, item):
+        self.link = item.link
+        self.title = item.title
