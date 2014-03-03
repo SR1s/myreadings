@@ -24,6 +24,9 @@ db.init_app(app)
 @app.route('/')
 def hello():
     items = Item.query.all()
+    for item in items:
+        note = Note.query.filter_by(item_id=item.id).first()
+        item.setRelatedNote(note.content)
     return render_template("index.html", items=items)
 
 @app.route('/add', methods=['GET', 'POST'])

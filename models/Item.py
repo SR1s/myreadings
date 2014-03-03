@@ -12,3 +12,6 @@ class Item(db.Model):
     def __repr__(self):
         return '<Item: %s : %s>' % \
                 (self.title, self.link)
+
+    def setRelatedNote(self, description):
+        self.description = description
