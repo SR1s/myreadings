@@ -1,5 +1,5 @@
 from myreadings.models import db
-from 
+from myreadings.utils import md5
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,6 +11,6 @@ class User(db.Model):
     def __init__(self, username, email, password, sina_id=None):
     	self.username = username
     	self.email = email
-    	self.password = password
+    	self.password = md5(password)
     	if sina_id:
     		self.sina_id = sina_id
