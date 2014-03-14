@@ -2,12 +2,12 @@
 import sys, os
 reload(sys)  
 sys.setdefaultencoding('utf8')
-sys.path.append(os.getcwd())
-sys.path.append("..")
 
 from flask import Flask, g, request, render_template, flash, redirect, url_for
 
 from myreadings.models import Item, Note, User, db
+
+from myreadings.views.User import user
 
 from config.local_config import \
     (MYSQL_HOST, MYSQL_HOST_S, MYSQL_PORT, 
@@ -20,9 +20,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] =  \
 app.debug = True
 app.secret_key = 'guesswhatkeyitis'
 db.init_app(app)
+app.register_blueprint(user, url_prefix="/user")
 
 @app.route('/')
-def hello():
+def index():
     notes = Note.query.order_by(Note.add_date.desc()).all()
     items = list()
     for note in notes:

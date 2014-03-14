@@ -1,0 +1,25 @@
+{% extends "basic.html" %}
+{% block body %}
+    <form method="post">
+        <h2>Register</h2>
+        <hr/>
+        <div class="form-group">
+            <label>Username：</label>
+            <input class="form-control" type="text" name="username" />
+        </div>
+        <div class="form-group">
+            <label>Email：</label>
+            <input class="form-control" type="text" name="email" />
+        </div>
+        <div class="form-group">
+            <label>Password：</label>
+            <input class="form-control" type="password" name="password" />
+        </div>
+        <div class="form-group">
+            <label>Comfirm：</label>
+            <input class="form-control" type="password" name="comfirm" />
+        </div>
+        <input class="btn btn-default" type="submit" value="sign up" />
+    </form>
+
+{% endblock %}
