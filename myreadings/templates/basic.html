@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="ua-mac ua-webkit">
-    <head>
-        <title>无读有偶？</title>
-        <link rel="stylesheet" type="text/css" href='{{ url_for("static",filename="bootstrap/css/bootstrap.min.css") }}'>
-        <link rel="stylesheet" type="text/css" href='{{ url_for("static",filename="css/myreadings.css") }}'>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navigator">
-                <div class="navbar-header">
-                    <a href="/" class="navbar-brand">无读有偶？</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a>发现</a></li>
-                        <li><a href="/mine/">我的记录</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="add">添加记录</a></li>
-                        <li><a href="/user/login">Login</a></li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">SR1<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="">退出登录</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <head><!--
+    <title>无读有偶？</title> -->
+    <title>RSM - Reading shapes ME</title>
+      <link rel="stylesheet" type="text/css" href='{{ url_for("static",filename="bootstrap/css/bootstrap.min.css") }}'>
+      <link rel="stylesheet" type="text/css" href='{{ url_for("static",filename="css/myreadings.css") }}'>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navigator">
+        <div class="navbar-header"><!--
+          <a href="/" class="navbar-brand">无读有偶？</a> -->
+          <a href="/" class="navbar-brand">RSM</a>
         </div>
-        <div class="main span12">
-            {% block body %}{% endblock %}
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a>发现</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user_info() == None %}
+            <li><a href="/user/login">登录</a></li>
+            {% else %}
+            <li><a href="add">添加记录</a></li>
+            <li><a href="/mine/">我的记录</a></li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{user_info().username}}<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/user/logout">退出登录</a></li>
+              </ul>
+            </li>
+            {% endif %}
+          </ul>
         </div>
-        <script type="text/javascript" src='{{ url_for("static",filename="bootstrap/js/bootstrap.min.js") }}'></script>
-    </body>
+      </div>
+    </div>
+    <div class="main span12">
+      {% block body %}{% endblock %}
+    </div>
+    <script type="text/javascript" src='{{ url_for("static",filename="bootstrap/js/bootstrap.min.js") }}'></script>
+  </body>
 </html>
