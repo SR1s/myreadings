@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, abort, url_for, \
 
 from myreadings.app  import db
 from myreadings.models.User import User
+from myreadings.utils import md5
 
 user = Blueprint("user", __name__)
 
@@ -14,11 +15,13 @@ def login():
 def perform_login():
     email = request.form['email']
     password = request.form['password']
-    user = User.query.filter_by(email=email, password=password).first()
+    user = User.query.filter_by(email=email, password=md5(password)).first()
     if user:
         flash("welcome back!")
         session['status'] = 'logined'
         session['user_id'] = user.id
+    else:
+        flash("wrong email or password")
     return redirect(url_for('index'))
 
 @user.route('/sign-up')
@@ -33,4 +36,10 @@ def perform_register():
     user = User(username, email, password)
     db.session.add(user)
     db.session.commit()
+    return redirect(url_for("index"))
+
+@user.route('/logout')
+def logout():
+    session.pop('status')
+    session.pop('user_id')
     return redirect(url_for("index"))
