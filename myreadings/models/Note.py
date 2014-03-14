@@ -21,3 +21,6 @@ class Note(db.Model):
     def mixinItem(self, item):
         self.link = item.link
         self.title = item.title
+
+    def mixinUser(self, user):
+        self.username = user.username
